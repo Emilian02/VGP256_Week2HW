@@ -72,6 +72,7 @@ void Task1()
 }
 
 //------------------Task 2------------------
+// 
 //------------------Equation 1------------------
 class Equation1
 {
@@ -219,9 +220,54 @@ public:
     }
 };
 
+//------------------Task 3------------------
+
+//Structure for a vector {x,y,z}
+struct Vector3
+{
+    float x, y, z;
+
+    Vector3() : x(0), y(0), z(0){}
+
+    Vector3(float x, float y, float z) : x(x), y(y), z(z){}
+
+    Vector3 operator/(float& scalar)
+    {
+        return Vector3(x / scalar, y / scalar, z / scalar);
+    }
+
+    void print() const {
+        std::cout << "{" << x << ", " << y << ", " << z << "}" << std::endl;
+    }
+};
+
+
+void Task3()
+{
+    float mass, weight;
+    float fx, fy, fz;
+    float netForce;
+    Vector3 acceleration;
+
+    std::cout << "Enter the object's weight: ";
+    std::cin >> weight;
+
+    std::cout << "\nNow enter the force vector {x,y,z}: ";
+    std::cin >> fx >> fy >> fz;
+
+    Vector3 force(fx, fy, fz);
+
+    mass = weight / 9.81;
+
+    acceleration = force / mass;
+
+    std::cout << "The resulting acceleration vector is: ";
+    acceleration.print();
+}
+
 int main()
 {
     Task1();
 
-
+    Task3();
 }
